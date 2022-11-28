@@ -12,3 +12,7 @@ import './styles/app.scss';
 import './bootstrap';
 
 console.log('Hello Webpack Encore !');
+
+$(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+});

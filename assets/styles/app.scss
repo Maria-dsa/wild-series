@@ -3,13 +3,10 @@
 /*******************************/
 
 
+$primary: #333333;
+$secondary: #FF8C00;
+$light: #AAA3A3;
+$body-bg: #f5f6f6;
+
+
 @import "~bootstrap/scss/bootstrap";
-
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans: ital, wght@0, 100; 0, 200; 0, 300; 0, 400; 0, 500; 0, 600; 0, 700; 1, 100; 1, 200; 1, 300; 1, 400; 1, 500; 1, 600; 1, 700&display=swap');
-
-
-
-
-body {
-    font-family: 'Work Sans', sans-serif;
-}
