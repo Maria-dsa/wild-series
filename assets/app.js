@@ -13,6 +13,4 @@ import './bootstrap';
 
 console.log('Hello Webpack Encore !');
 
-$(document).ready(function () {
-    $('[data-toggle="popover"]').popover();
-});
+require("bootstrap")
