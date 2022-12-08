@@ -33,9 +33,9 @@ class CategoryController extends AbstractController
         // Get data from HTTP request
         $form->handleRequest($request);
         // Was the form submitted ?
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             // Deal with the submitted data
-            // For example : persiste & flush the entity
+            // For example : persist & flush the entity
             $categoryRepository->save($category, true);
             // And redirect to a route that display the result
             return $this->redirectToRoute('category_index');
