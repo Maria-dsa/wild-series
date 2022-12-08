@@ -37,8 +37,9 @@ class ProgramController extends AbstractController
         // Was the form submitted ?
         if ($form->isSubmitted() && $form->isValid()) {
             // Deal with the submitted data
-            // For example : persiste & flush the entity
+            // For example : persist & flush the entity
             $programRepository->save($program, true);
+            $this->addFlash('success', 'La nouvelle série a été créée');
             // And redirect to a route that display the result
             return $this->redirectToRoute('program_index');
         }
@@ -63,7 +64,8 @@ class ProgramController extends AbstractController
     }
 
 
-    #[Route('/{programId}/seasons/{seasonId}', requirements: ['programId' => '\d+', 'seasonId' => '\d+'], methods: ['GET'], name: 'season_show')]
+    #[Route('/{programId}/seasons/{seasonId}',
+        requirements: ['programId' => '\d+', 'seasonId' => '\d+'], methods: ['GET'], name: 'season_show')]
     #[Entity('program', options: ['mapping' => ['programId' => 'id']])]
     #[Entity('season', options: ['mapping' => ['seasonId' => 'id']])]
 
@@ -91,7 +93,9 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/{programId}/seasons/{seasonId}/episodes/{episodeId}', requirements: ['programId' => '\d+', 'seasonId' => '\d+', 'episodeId' => '\d+'], methods: ['GET'], name: 'episode_show')]
+    #[Route('/{programId}/seasons/{seasonId}/episodes/{episodeId}',
+        requirements: ['programId' => '\d+', 'seasonId' => '\d+', 'episodeId' => '\d+'],
+        methods: ['GET'], name: 'episode_show')]
     #[Entity('program', options: ['mapping' => ['programId' => 'id']])]
     #[Entity('season', options: ['mapping' => ['seasonId' => 'id']])]
     #[Entity('episode', options: ['mapping' => ['episodeId' => 'id']])]
