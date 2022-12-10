@@ -27,7 +27,17 @@
 
 			<p>Catégorie :
 				{{ program.category.name }}</p>
+
+			<strong>Acteurs :</strong>
+			<ul>
+				{% for actor in program.actors %}
+					<li>{{ actor.name }} : <a href="{{ path("actor_show", { id: actor.id }) }}"> voir la fiche de l'acteur </a></li>
+				{% else %}
+					<li>Aucun acteur pour cette série</li>
+				{% endfor %}
+			</ul>
 		</div>
+
 		<a href="{{ path('program_index') }}">
 			Retour à la liste des programmes
 		</a>

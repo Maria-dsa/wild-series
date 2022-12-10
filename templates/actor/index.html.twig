@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les acteurs
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="example-wrapper">
+        <h1>Tous les acteurs</h1>
+
+        <ul>
+            {% for actor in actors %}
+                <li> {{ actor.name }} :  <a href="{{ path("actor_show", { id: actor.id }) }}">Voir la fiche</a> </li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+{% endblock %}
