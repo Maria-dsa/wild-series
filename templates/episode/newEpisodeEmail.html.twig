@@ -1,0 +1,9 @@
+{% extends '_emailLayout.html.twig' %}
+
+    {% block title %} Nouvel épisode {% endblock %}
+
+{% block body %}
+<h1>Nouvel épisode {{ episode.title }} créée</h1>
+<p>Bonjour, le nouvel épisode de la saison {{ episode.season.number }} de la série {{ episode.season.program.title }} a été créé sur Wild Séries</p>
+<p>Synopsis : {{episode.synopsis }}
+    {% endblock %}

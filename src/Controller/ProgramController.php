@@ -9,6 +9,8 @@ use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
 use App\Service\ProgramDuration;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +30,7 @@ class ProgramController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    public function new(Request $request, ProgramRepository $programRepository, SluggerInterface $slugger): Response
+    public function new(Request $request, MailerInterface $mailer, ProgramRepository $programRepository, SluggerInterface $slugger): Response
     {
         // Create a new Program Object
         $program = new Program();
@@ -43,7 +45,17 @@ class ProgramController extends AbstractController
             // Deal with the submitted data
             // For example : persist & flush the entity
             $programRepository->save($program, true);
+            //send message flash
             $this->addFlash('success', 'La nouvelle série a été créée');
+
+            //send email
+            $email = (new Email())
+                ->from($this->getParameter('mailer_from'))
+                ->to('mdg.desousa@gmail.com')
+                ->subject('Une nouvelle série vient d\'être publiée !')
+                ->html($this->renderView('Program/newProgramEmail.html.twig', ['program' => $program]));
+            $mailer->send($email);
+
             // And redirect to a route that display the result
             return $this->redirectToRoute('program_index');
         }
