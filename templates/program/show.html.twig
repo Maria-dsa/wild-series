@@ -24,6 +24,7 @@
 					</li>
 				{% endfor %}
 			</ul>
+			<p>Durée totale de la série : {{ programDuration }}</p>
 
 			<p>Catégorie :
 				{{ program.category.name }}</p>
@@ -36,6 +37,7 @@
 					<li>Aucun acteur pour cette série</li>
 				{% endfor %}
 			</ul>
+
 		</div>
 
 		<a href="{{ path('program_index') }}">
