@@ -27,6 +27,10 @@
 				<td>{{ episode.title }}</td>
 			</tr>
 			<tr>
+				<th>Poster</th>
+				<td><img src="{{ vich_uploader_asset(episode) }}" alt="{{ episode.title }}"></td>
+			</tr>
+			<tr>
 				<th>Number</th>
 				<td>{{ episode.number }}</td>
 			</tr>

@@ -19,6 +19,39 @@
 			Résumé :
 			{{ episode.synopsis}}</p>
 
+		<h3>Liste des commentaires</h3>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Auteur</th>
+				<th>Commentaire</th>
+				<th>Rate</th>
+
+			</tr>
+			</thead>
+			<tbody>
+		{% for comment in episode.comments %}
+			<tr>
+			<td> {{ comment.author.email }} </td>
+			<td> {{ comment.comment }}</td>
+			<td> {{ comment.rate }}</td>
+			</tr>
+
+		{% else %}
+			<tr>
+				<td colspan="3">pas de commentaires</td>
+			</tr>
+		{% endfor %}
+			</tbody>
+		</table>
+
+		<p>
+		{% if app.user %}
+				<a href ="{{ path("app_comment_new", {episodeId:episode.id})}}"> Ajouter un commentaire </a>
+		{% endif %}
+
+		</p>
+
 
 	</div>
 

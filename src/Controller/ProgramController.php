@@ -149,7 +149,7 @@ class ProgramController extends AbstractController
     #[Entity('season', options: ['mapping' => ['seasonId' => 'id']])]
     #[Entity('episode', options: ['mapping' => ['episodeId' => 'id']])]
 
-    public function showEpisode(Program $program, Season $season, Episode $episode): Response
+    public function showEpisode(Program $program, Season $season, Episode $episode ): Response
     {
 
         if (!$program) {

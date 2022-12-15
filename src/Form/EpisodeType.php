@@ -7,6 +7,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class EpisodeType extends AbstractType
 {
@@ -20,7 +21,12 @@ class EpisodeType extends AbstractType
                 'choice_label' => function ($season) {
                     return 'Saison ' . $season->getNumber() . ' de : ' . $season->getProgram();
                 }
-            ]);
+            ])
+            ->add('posterFile', VichFileType::class, [
+                'required'      => false,
+                'allow_delete'  => true, // not mandatory, default is true
+                'download_uri' => true, // not mandatory, default is true
+          ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
